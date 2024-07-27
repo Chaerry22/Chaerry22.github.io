@@ -396,11 +396,15 @@ article .icon {
 }
 
 .project-btn {
-  color: white;
-  border-color: black;
-  background: black;
+  background: black; /* Default background color */
+  color: white; /* Default text color */
+  transition: all 300ms ease; /* Smooth transition */
 }
 
+.project-btn:hover {
+  background: white; /* Background color when hovered */
+  color: black; /* Text color when hovered */
+}
 
 
 /* CONTACT */
