@@ -410,6 +410,8 @@ article .icon {
   justify-content: center;
   flex-direction: column;
   height: 70vh;
+  padding: 2rem 0;
+  margin: 8rem;
 }
 
 .contact-info-upper-container {
@@ -431,8 +433,20 @@ article .icon {
   margin: 1rem;
 }
 
+.contact-info-container a {
+  color: grey;
+  text-decoration: none; /* Optional: to remove underline */
+}
+
+.contact-info-container a:hover {
+  color: black;
+  text-decoration: underline; /* Optional: to add underline on hover */
+}
+
+
 .contact-info-container p {
   font-size: larger;
+
 }
 
 .contact-icon {
@@ -443,13 +457,101 @@ article .icon {
   height: 2.5rem;
 }
 
+/* CONTACT FORM */
+.contact-form-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+form {
+  display: relative;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+label {
+  font-weight: 500;
+  color: rgb(53, 53, 53);
+}
+
+input, textarea {
+  padding: 0.5rem;
+  border: 1px solid rgb(163, 163, 163);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+textarea {
+  width: 103%;
+  height: 200px; /* Adjust height as needed */
+  padding: 1rem;
+  border: 1px solid rgb(163, 163, 163);
+  border-radius: 0.5rem;
+  box-sizing: border-box; /* Ensure padding is included in width/height */
+  font-family: "Poppins", sans-serif; /* Change this to your desired font */
+  font-size: 1rem; /* Adjust font size as needed */
+  color: black; /* Change text color if needed */
+  resize: none;
+}
+
+
+.send-message-btn {
+  background: rgb(53, 53, 53);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 2rem;
+}
+
+.send-message-btn:hover {
+  background: white;
+  color: black;
+  border: rgb(53, 53, 53) 0.1rem solid;
+}
+
+
 /* FOOTER SECTION */
 
 footer {
   height: 26vh;
-  margin: 0 1rem;
+  background-color: black; /* Set a distinct background color for the footer */
+  color: white; /* Text color for better readability */
+  padding: 2rem 0; /* Add some padding for spacing */
 }
 
-footer p {
+footer nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem; /* Spacing between nav and text */
+}
+
+footer .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem; /* Space between links */
+  font-size: 1rem; /* Adjust font size */
+  padding: 0;
+}
+
+footer .nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+footer .nav-links a:hover {
+  color: rgb(181, 181, 181); /* Hover effect for links */
+  text-decoration: underline;
+}
+
+footer p 
+{
   text-align: center;
+  margin-top: 1rem; /* Space above the text */
+  font-size: 1.3rem; /* Adjust font size*/
 }
