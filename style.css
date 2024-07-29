@@ -332,6 +332,22 @@ section {
   margin: auto 0;
 }
 
+.section__pic-container {
+  width: 600px; /* Set the desired width */
+  height: 600px; /* Set the desired height */
+  overflow: hidden; /* Hide overflow to ensure the image stays within bounds */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-pic {
+  width: 100%; /* Ensure the image fits the container */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensures the image covers the entire area without distortion */
+  border-radius: 0; /* Ensure it’s not rounded */
+}
+
 /* EXPERIENCE SECTION */
 
 #experience {
