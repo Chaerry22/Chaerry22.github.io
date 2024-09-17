@@ -319,6 +319,8 @@ section {
   border: rgb(53, 53, 53) 0.1rem solid;
   border-color: rgb(163, 163, 163);
   text-align: center;
+  width: 100%; /* Ensure full width for better centering */
+  max-width: 300px; /* Limit max-width to prevent stretching */
 }
 
 .section-container {
@@ -363,18 +365,15 @@ section {
 }
 
 .experience-details-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; /* Adjusts the space between the projects */
 }
-
 .article-container {
   display: flex;
-  text-align: initial;
   flex-wrap: wrap;
-  flex-direction: row;
   gap: 2.5rem;
-  justify-content: space-around;
+  justify-content: center; /* Center the articles */
 }
 
 article {
@@ -394,7 +393,13 @@ article .icon {
   position: relative;
 }
 
-
+.project-containers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 5rem; /* Space between items */
+  width: 100%; /* Full width of parent */
+  max-width: 1200px; /* Optional: set a max width */
+}
 .color-container {
   border-color: rgb(163, 163, 163);
   background: rgb(250, 250, 250);
