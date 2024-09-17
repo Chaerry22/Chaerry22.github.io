@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Calendar</title>
+    <style>
+        :root {
+            --primary-color: #6f5cc5;
+            --secondary-color: #e6e6fa;
+            --text-color: #333;
+            --background-color: #f9f9f9;
+            --border-color: #ddd;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            width: 100%;
+        }
+        #sidebar {
+            width: 300px;
+            padding: 20px;
+            border-right: 1px solid var(--border-color);
+            margin-right: 20px;
+        }
+        #calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            max-width: 2000px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            flex: 1;
+        }
+        .day {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            min-height: 120px;
+            position: relative;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .day:hover {
+            background-color: var(--secondary-color);
+        }
+        .event {
+            margin-bottom: 5px;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .event input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .event.crossed-out {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+        .birthday { background-color: #ff69b4; }
+        .holiday { background-color: #32cd32; }
+        .custom { background-color: var(--primary-color); }
+        #eventForm, #editEventForm {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            z-index: 1000;
+            width: 300px;
+        }
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        form input[type="text"], form input[type="time"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+        form button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        form button:hover {
+            background-color: #5a4aa0;
+        }
+        #cancelBtn, #deleteBtn {
+            background-color: #f44336;
+        }
+        #cancelBtn:hover, #deleteBtn:hover {
+            background-color: #d32f2f;
+        }
+        #eventList {
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <h2>Events</h2>
+        <div id="eventList"></div>
+    </div>
+    <div id="main">
+        <h1>My Calendar</h1>
+        <div id="calendar"></div>
+    </div>
+    <div id="overlay"></div>
+
+    <!-- Create Event Form -->
+    <div id="eventForm">
+        <h2>Add Event</h2>
+        <form id="addEventForm">
+            <input type="hidden" id="eventDate">
+            <label>
+                <input type="radio" name="eventType" value="custom" checked> Add Event
+            </label>
+            <label>
+                <input type="radio" name="eventType" value="birthday"> Add Birthday
+            </label>
+            <label>
+                <input type="radio" name="eventType" value="holiday"> Add Holiday
+            </label>
+            <div id="timeInputContainer">
+                <label for="eventStartTime">Event Start Time:</label>
+                <input type="time" id="eventStartTime">
+                <label for="eventEndTime">Event End Time:</label>
+                <input type="time" id="eventEndTime">
+            </div>
+            <label id="eventNameLabel" for="eventName">Event Name:</label>
+            <input type="text" id="eventName" required>
+            <button type="submit">Add</button>
+            <button type="button" id="cancelBtn">Cancel</button>
+        </form>
+    </div>
+
+    <!-- Edit Event Form -->
+    <div id="editEventForm">
+        <h2>Edit Event</h2>
+        <form id="editEventFormContent">
+            <input type="hidden" id="editEventDate">
+            <input type="hidden" id="editEventIndex">
+            <label for="editEventName">Event Name:</label>
+            <input type="text" id="editEventName" required>
+            <div id="editTimeInputContainer">
+                <label for="editEventStartTime">Event Start Time:</label>
+                <input type="time" id="editEventStartTime">
+                <label for="editEventEndTime">Event End Time:</label>
+                <input type="time" id="editEventEndTime">
+            </div>
+            <button type="submit">Save Changes</button>
+            <button type="button" id="deleteBtn">Delete Event</button>
+            <button type="button" id="editCancelBtn">Cancel</button>
+        </form>
+    </div>
+
+    <script>
+        const calendar = document.getElementById('calendar');
+        const form = document.getElementById('addEventForm');
+        const eventForm = document.getElementById('eventForm');
+        const overlay = document.getElementById('overlay');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const editEventForm = document.getElementById('editEventForm');
+        const editEventFormContent = document.getElementById('editEventFormContent');
+        const deleteBtn = document.getElementById('deleteBtn');
+        const editCancelBtn = document.getElementById('editCancelBtn');
+        const timeInputContainer = document.getElementById('timeInputContainer');
+        const editTimeInputContainer = document.getElementById('editTimeInputContainer');
+        const eventNameLabel = document.getElementById('eventNameLabel');
+        const eventList = document.getElementById('eventList');
+        let events = {};
+
+        function loadEvents() {
+            const storedEvents = localStorage.getItem('calendarEvents');
+            if (storedEvents) {
+                events = JSON.parse(storedEvents);
+            }
+        }
+
+        function saveEvents() {
+            localStorage.setItem('calendarEvents', JSON.stringify(events));
+        }
+
+        function createCalendar() {
+            calendar.innerHTML = '';
+            const date = new Date();
+            const year = date.getFullYear();
+            const month = date.getMonth();
+
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+
+            const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            dayNames.forEach(day => {
+                const dayHeader = document.createElement('div');
+                dayHeader.textContent = day;
+                dayHeader.style.fontWeight = 'bold';
+                dayHeader.style.textAlign = 'center';
+                dayHeader.style.padding = '10px';
+                calendar.appendChild(dayHeader);
+            });
+
+            for (let i = 0; i < firstDay.getDay(); i++) {
+                calendar.appendChild(document.createElement('div'));
+            }
+
+            for (let day = 1; day <= lastDay.getDate(); day++) {
+                const dayElement = document.createElement('div');
+                dayElement.classList.add('day');
+                dayElement.textContent = day;
+                dayElement.addEventListener('click', () => showEventForm(year, month, day));
+                calendar.appendChild(dayElement);
+            }
+            updateCalendar();
+        }
+
+        function showEventForm(year, month, day) {
+            const date = new Date(year, month, day);
+            document.getElementById('eventDate').value = date.toISOString().split('T')[0];
+            eventForm.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        function showEditEventForm(date, index) {
+            const event = events[date][index];
+            document.getElementById('editEventDate').value = date;
+            document.getElementById('editEventIndex').value = index;
+            document.getElementById('editEventName').value = event.name;
+            document.getElementById('editEventStartTime').value = event.startTime;
+            document.getElementById('editEventEndTime').value = event.endTime;
+            editEventForm.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        function hideEventForm() {
+            eventForm.style.display = 'none';
+            editEventForm.style.display = 'none';
+            overlay.style.display = 'none';
+            form.reset();
+            editEventFormContent.reset();
+        }
+
+        function addEvent(date, type, name, startTime = '', endTime = '') {
+            if (!events[date]) {
+                events[date] = [];
+            }
+            events[date].push({ type, name, startTime, endTime, completed: false });
+            saveEvents();
+            updateCalendar();
+        }
+
+        function deleteEvent(date, index) {
+            events[date].splice(index, 1);
+            if (events[date].length === 0) {
+                delete events[date];
+            }
+            saveEvents();
+            updateCalendar();
+        }
+
+        function updateEvent(date, index, updatedEvent) {
+            events[date][index] = updatedEvent;
+            saveEvents();
+            updateCalendar();
+        }
+
+        function updateCalendar() {
+            const dayElements = calendar.getElementsByClassName('day');
+            const year = new Date().getFullYear();
+            const month = new Date().getMonth();
+            
+            eventList.innerHTML = ''; // Clear previous list
+
+            for (let i = 0; i < dayElements.length; i++) {
+                const day = i + 1;
+                const dayElement = dayElements[i];
+                const dateStr = new Date(year, month, day).toISOString().split('T')[0];
+                const dayEvents = events[dateStr] || [];
+                
+                dayElement.innerHTML = `${day}`; // Clear previous content
+
+                dayEvents.forEach((event, index) => {
+                    const eventContainer = document.createElement('div');
+                    eventContainer.classList.add('event', event.type);
+                    if (event.completed) {
+                        eventContainer.classList.add('crossed-out');
+                    }
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.checked = event.completed;
+                    checkbox.addEventListener('change', (e) => {
+                        e.stopPropagation(); // Prevent the form from opening
+                        event.completed = checkbox.checked;
+                        saveEvents();
+                        updateCalendar();
+                    });
+                    const eventText = document.createElement('span');
+                    eventText.textContent = event.name;
+                    if (event.type === 'custom') {
+                        eventText.textContent += ` (${event.startTime} - ${event.endTime})`;
+                    }
+                    eventContainer.appendChild(checkbox);
+                    eventContainer.appendChild(eventText);
+                    const editBtn = document.createElement('button');
+                    editBtn.textContent = 'Edit';
+                    editBtn.style.backgroundColor = '#007bff';
+                    editBtn.style.color = '#fff';
+                    editBtn.style.border = 'none';
+                    editBtn.style.padding = '3px 6px';
+                    editBtn.style.borderRadius = '3px';
+                    editBtn.style.cursor = 'pointer';
+                    editBtn.style.marginLeft = '10px';
+                    editBtn.addEventListener('click', (e) => {
+                        e.stopPropagation(); // Prevent the form from opening
+                        showEditEventForm(dateStr, index);
+                    });
+                    eventContainer.appendChild(editBtn);
+                    dayElement.appendChild(eventContainer);
+                });
+
+                // Create list item for the sidebar
+                if (dayEvents.length > 0) {
+                    const listItem = document.createElement('div');
+                    listItem.classList.add('day-list-item');
+                    listItem.innerHTML = `<strong>${day}</strong>`;
+                    dayEvents.forEach((event, index) => {
+                        const listItemEvent = document.createElement('div');
+                        listItemEvent.classList.add('event', event.type);
+                        if (event.completed) {
+                            listItemEvent.classList.add('crossed-out');
+                        }
+                        listItemEvent.innerHTML = `<input type="checkbox" ${event.completed ? 'checked' : ''}>
+                            ${event.name} (${event.startTime} - ${event.endTime})
+                            <button onclick="showEditEventForm('${dateStr}', ${index})">Edit</button>`;
+                        listItem.appendChild(listItemEvent);
+                    });
+                    eventList.appendChild(listItem);
+                }
+            }
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const date = document.getElementById('eventDate').value;
+            const type = document.querySelector('input[name="eventType"]:checked').value;
+            const name = document.getElementById('eventName').value;
+            let startTime = '';
+            let endTime = '';
+            if (type === 'custom') {
+                startTime = document.getElementById('eventStartTime').value;
+                endTime = document.getElementById('eventEndTime').value;
+            }
+            addEvent(date, type, name, startTime, endTime);
+            hideEventForm();
+        });
+
+        editEventFormContent.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const date = document.getElementById('editEventDate').value;
+            const index = document.getElementById('editEventIndex').value;
+            const name = document.getElementById('editEventName').value;
+            const startTime = document.getElementById('editEventStartTime').value;
+            const endTime = document.getElementById('editEventEndTime').value;
+            if (name === '') {
+                deleteEvent(date, index);
+            } else {
+                const updatedEvent = { ...events[date][index], name, startTime, endTime };
+                updateEvent(date, index, updatedEvent);
+            }
+            hideEventForm();
+        });
+
+        deleteBtn.addEventListener('click', function() {
+            const date = document.getElementById('editEventDate').value;
+            const index = document.getElementById('editEventIndex').value;
+            deleteEvent(date, index);
+            hideEventForm();
+        });
+
+        document.querySelectorAll('input[name="eventType"]').forEach(input => {
+            input.addEventListener('change', function() {
+                if (this.value === 'custom') {
+                    timeInputContainer.style.display = 'block';
+                    eventNameLabel.textContent = 'Event Name:';
+                } else {
+                    timeInputContainer.style.display = 'none';
+                    eventNameLabel.textContent = this.value === 'birthday' ? 'Whose Birthday:' : 'Name of Holiday:';
+                }
+            });
+        });
+
+        cancelBtn.addEventListener('click', hideEventForm);
+        editCancelBtn.addEventListener('click', hideEventForm);
+        overlay.addEventListener('click', hideEventForm);
+
+        // Load events and create calendar on page load
+        loadEvents();
+        createCalendar();
+    </script>
+</body>
+</html>
