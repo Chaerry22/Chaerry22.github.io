@@ -4,25 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Danyeol Chae | Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="media.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav id="desktop-nav">
-        <div class="logo">Danyeol Chae</div>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="desktop-nav" class="glass-nav">
+        <div class="logo">
+            <span class="logo-text">DC</span>
+            <span class="logo-full">Danyeol Chae</span>
+        </div>
         <div>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
-
     </nav>
-    <nav id="hamburger-nav">
-        <div class="logo">Danyeol Chae</div>
+
+    <nav id="hamburger-nav" class="glass-nav">
+        <div class="logo">
+            <span class="logo-text">DC</span>
+            <span class="logo-full">Danyeol Chae</span>
+        </div>
         <div class="hamburger-menu">
             <div class="hamburger-icon" onclick="toggleMenu()">
                 <span></span>
@@ -31,387 +49,785 @@
             </div>
             <ul class="menu-links">
                 <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
                 <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
                 <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
                 <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
             </ul>
         </div>
     </nav>
-    <section id="profile">
-        <div class="section__pic-container">
-            <img src="./assets/1699483405151.jpeg" alt="My Profile Picture">
+
+    <!-- Hero Section -->
+    <section id="profile" class="hero-section">
+        <div class="hero-content">
+            <div class="profile-image-wrapper">
+                <div class="image-glow"></div>
+                <img src="./assets/1699483405151.jpeg" alt="Danyeol Chae" class="profile-image">
+            </div>
+            <div class="hero-text">
+                <p class="hero-greeting">Hello, I'm</p>
+                <h1 class="hero-name">
+                    <span class="name-gradient">Danyeol Chae</span>
+                </h1>
+                <div class="typing-text">
+                    <span class="typing-cursor">|</span>
+                    <span class="typing-content">Software Developer</span> <br>
+                    <span class="typing-content">Data Analyst and Engineer</span>
         </div>
-        <div class="section__text">
-            <p class="section__text__p1">Hello, my name is</p>
-            <h1 class="title">Danyeol Chae</h1>
-            <p class="section__text__p2">Computer Science Student</p>
+                <p class="hero-description">
+                    Passionate about building innovative solutions through code. 
+                    Exploring the intersection of data science, software development, and AI.
+                </p>
             <div class="btn-container">
-                <button 
-                class="btn resume-btn" 
-                onclick="window.open('./assets/Resume 8-24.pdf')">
-                Resume
-            <!-- Change this part in the profile section -->
-                <button 
-                class="btn contact-btn" 
-                onclick="window.location.href='#contact'">Contact</button>
+                    <button class="btn btn-primary" onclick="window.open('./assets/Danyeol Chae.pdf')">
+                        <span>View Resume</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-secondary" onclick="window.location.href='#contact'">
+                        <span>Get In Touch</span>
+                    </button>
             </div>
             <div id="socials-container">
-                <img src="./assets/linkedin.png" 
-                alt="My LinkedIn Profile" class="icon" 
-                onclick="location.href='https://www.linkedin.com/in/danyeol-chae-04979424a/'"
-                >
-                <img src="./assets/github.png" 
-                alt="My GitHub Profile" class="icon" 
-                onclick="location.href='https://github.com/Chaerry22'"
-                >
+                    <a href="https://www.linkedin.com/in/danyeol-chae-04979424a/" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <img src="./assets/linkedin.png" alt="LinkedIn" class="icon">
+                    </a>
+                    <a href="https://github.com/Chaerry22" target="_blank" class="social-link" aria-label="GitHub">
+                        <img src="./assets/github.png" alt="GitHub" class="icon">
+                    </a>
+                </div>
             </div>
         </div>
-    
     </section>
-    <section id="about">
-        <p class="section__text__p1">Get To Know More</p>
-        <h1 class="title">About Me</h1>
-        <div class="section-container">
-            <div class="section__pic-container">
-                <img src="./assets/about-pic.jpg" alt="about pic" class="about-pic">
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="section-header">
+            <p class="section-subtitle">Get To Know More</p>
+            <h2 class="section-title">About Me</h2>
+        </div>
+        <div class="about-container">
+            <div class="about-image-wrapper">
+                <div class="image-border-glow"></div>
+                <img src="./assets/about-pic.jpg" alt="About Danyeol Chae" class="about-image">
             </div>
-            <div class="about-details-container">
-                <div class="about-containers">
-                    <div class="details-container">
-                        <img src="./assets/experience.png" alt="Experience icon" class="icon"/>
+            <div class="about-content">
+                <div class="about-cards">
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <img src="./assets/experience.png" alt="Experience" class="icon">
+                        </div>
                         <h3>Experience</h3>
-                        <p>Data Science Intern</p>
+                        <p>Assistant Developer</p>
+                        <p class="card-subtitle">Hekman Library</p>
                     </div>
-                    <div class="details-container">
-                        <img src="./assets/education.png" alt="Education icon" class="icon"/>
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <img src="./assets/education.png" alt="Education" class="icon">
+                        </div>
                         <h3>Education</h3>
                         <p>Calvin University</p>
+                        <p class="card-subtitle">Computer Science</p>
                     </div>
                 </div>
-                <div class="text-container">
-                    <p>Hello, my name is Daniel Chae. I am a junior in College studying Computer Science. I was born in Korea, raised in East Africa, and now studying in Grand Rapids Michigan at Calvin University. </p>
+                <div class="about-text">
+                    <p>
+                        Hello! I'm <strong>Danyeol Chae</strong>, a junior Computer Science student at Calvin University. 
+                        My journey has taken me from Korea to East Africa, and now to Grand Rapids, Michigan, 
+                        where I'm pursuing my passion for technology and innovation.
+                    </p>
+                    <p>
+                        I'm deeply interested in data science, machine learning, and software development. 
+                        Through my experiences as a Technology Assistant at Hekman Library, Data Intern at Calvin University 
+                        and ADAC Automotive, and Resident Assistant, I've developed strong technical skills and 
+                        leadership abilities that I bring to every project.
+                    </p>
+                    <p>
+                        When I'm not coding, I enjoy exploring new technologies, working on creative projects, 
+                        and continuously learning to stay at the forefront of the tech industry.
+                    </p>
                 </div>
             </div>
         </div>
-        <img 
-            src="./assets/arrow.png" 
-            alt="Arrow icon" 
-            class="icon arrow" 
-            onclick="location.href='./#experience'">
+    </section>
 
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="section-header">
+            <p class="section-subtitle">What I Can Do</p>
+            <h2 class="section-title">Skills & Technologies</h2>
+        </div>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3 class="category-title">Programming Languages</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>Python</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>Java</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>JavaScript</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>TypeScript</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>PHP</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>HTML/CSS</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3 class="category-title">Web & Frontend Development</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>React</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>React Native</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>Web Development</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>UI Design</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>UX Design</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>API Development</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3 class="category-title">Backend & Infrastructure</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>Backend Development</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>Server Management</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>Deployment</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>Mobile Development</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>Application Development</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3 class="category-title">Database & Enterprise Tools</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>SQL</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>Microsoft SSMS</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>Dynamics 365</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3 class="category-title">Data Science & Analytics</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>PowerBI</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>Tableau</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>Power Query</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>Machine Learning</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>PyTorch</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>Data Analysis</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>R Studio</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3 class="category-title">Specialized Systems</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>Embedded Systems</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>Raspberry Pi</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>Arduino</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon"></div>
+                        <span>Microcontrollers, Sensors, and Actuators</span>
+                        <div class="skill-level">
+                            <div class="skill-bar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3 class="category-title">Soft Skills</h3>
+                <div class="skills-tags">
+                    <span class="skill-tag">Leadership</span>
+                    <span class="skill-tag">Teamwork</span>
+                    <span class="skill-tag">Problem Solving</span>
+                    <span class="skill-tag">Communication</span>
+                    <span class="skill-tag">Management</span>
+                    <span class="skill-tag">Relationship Building</span>
+                    <span class="skill-tag">Confrontation Resolution</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    </section>
-    <section id="experience">
-        <p class="section__text__p1"> Explore My</p>
-        <h1 class="title">Experience</h1>
-        <div class="experience-details-container">
-            <div class="about-containers">
-                <div class="details-container">
-                    <h2 class="experience-sub-title">Data Intern</h2>
-                    <div class="article-container">
-                        <article>
-                            <img 
-                            src="./assets/checkmark.png" 
-                            alt="Experience icon" 
-                            class="icon"
-                            >
-                            <div>
-                                <h3>Data Science</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img 
-                            src="./assets/checkmark.png" 
-                            alt="Experience icon" 
-                            class="icon"
-                            >
-                            <div>
-                                <h3>Python</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img 
-                            src="./assets/checkmark.png" 
-                            alt="Experience icon" 
-                            class="icon"
-                            >
-                            <div>
-                                <h3>PowerBI</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img 
-                            src="./assets/checkmark.png" 
-                            alt="Experience icon" 
-                            class="icon"
-                            >
-                            <div>
-                                <h3>Power Query</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </div>
-            <div class="RA-about-containers"></div>
-                <div class="details-container">
-                    <h2 class="experience-sub-title">Resident Assistant</h2>
-                    <div class="article-container">
-                        <article>
-                            <img 
-                            src="./assets/checkmark.png" 
-                            alt="Experience icon" 
-                            class="icon"
-                            >
-                            <div>
-                                <h3>Teamwork</h3>
-                                
-                            </div>
-                        </article>
-                        <article>
-                            <img 
-                            src="./assets/checkmark.png" 
-                            alt="Experience icon" 
-                            class="icon"
-                            >
-                            <div>
-                                <h3>Management</h3>
-                                
-                            </div>
-                        </article>
-                        
-                        <article>
-                            <img 
-                            src="./assets/checkmark.png" 
-                            alt="Experience icon" 
-                            class="icon"
-                            >
-                            <div>
-                                <h3>Problem Solving</h3>
-                                
-                            </div>
-                        </article>
-                        <article>
-                            <img 
-                            src="./assets/checkmark.png" 
-                            alt="Experience icon" 
-                            class="icon"
-                            >
-                            <div>
-                                <h3>Confrontation</h3>
-                                
-                            </div>
-                        </article>
-                        <article>
-                            <img 
-                            src="./assets/checkmark.png" 
-                            alt="Experience icon" 
-                            class="icon"
-                            >
-                            <div>
-                                <h3>Relationship building</h3>
-                                
-                            </div>
-                        </article>
-                        <article>
-                            <img 
-                            src="./assets/checkmark.png" 
-                            alt="Experience icon" 
-                            class="icon"
-                            >
-                            <div>
-                                <h3>Communication</h3>
-                                
-                            </div>
-                        </article>
-                        <article>
-                            <img 
-                            src="./assets/checkmark.png" 
-                            alt="Experience icon" 
-                            class="icon"
-                            >
-                            <div>
-                                <h3>Leadership</h3>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-                <br><br><br>
-            </div>
-            <br><br><br>
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="section-header">
+            <p class="section-subtitle">Explore My</p>
+            <h2 class="section-title">Experience</h2>
         </div>
-        <br><br><br>
-    </section>
-    <section id="projects">
-        <p class="section__text__p1">Some of my</p>
-        <h1 class="title">Projects</h1>
-        <br>
-        <div class="experience-details-container">
-            <div class="project-containers">
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img 
-                        src="./assets/ServerProject.webp" 
-                        alt="Project 1" 
-                        class="project-img">
+        <div class="experience-container">
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div class="experience-icon">
+                        <img src="./assets/hekman-logo.png" alt="Hekman Library" class="company-logo">
                     </div>
-                    <h2 class="experience-sub-title project-title">Server Client Project</h2>
-                    <div class="btn-container">
-                        <button 
-                        class="btn btn-color-2 project-btn" 
-                        onclick="location.href='https://github.com/Chaerry22/Server-Client-Project'">
-                            GitHub
-                        </button>
-                        <button 
-                        class="btn btn-color-2 project-btn" 
-                        onclick="location.href='REPLACE ME'">
-                            See Project
-                        </button>
+                    <div>
+                        <h3 class="experience-title">Assistant Developer</h3>
+                        <p class="experience-company">Hekman Library | Aug 2025 - Present</p>
                     </div>
                 </div>
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img 
-                        src="./assets/Calendar.jpeg" 
-                        alt="Project 2"
-                        width="10rem"
-                        class="project-img">
+                <div class="experience-skills">
+                    <div class="experience-skill-item">
+                        <img src="./assets/checkmark.png" alt="Check" class="icon">
+                        <div>
+                            <h4>React Native Development</h4>
+                            <p>Built self-checkout kiosk application; iterated on features based on user testing and improved UX/UI</p>
+                        </div>
                     </div>
-                    <h2 class="experience-sub-title project-title">Calendar Website Project</h2>
-                    <div class="btn-container">
-                        <button 
-                        class="btn btn-color-2 project-btn" 
-                        onclick="location.href='https://github.com/Chaerry22/Caldenar'">
-                            GitHub
-                        </button>
-                        <button 
-                        class="btn btn-color-2 project-btn" 
-                        onclick="location.href='Calendar.html'">
-                            See Project
-                        </button>
+                    <div class="experience-skill-item">
+                        <img src="./assets/checkmark.png" alt="Check" class="icon">
+                        <div>
+                            <h4>Full-Stack Development</h4>
+                            <p>Developed real-time room availability system for 36 study rooms using HTML, CSS, JavaScript, jQuery, and LibCal API</p>
+                        </div>
                     </div>
-                </div>
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img 
-                        src="./assets/flower.jpeg" 
-                        alt="Project 3" 
-                        class="project-img">
+                    <div class="experience-skill-item">
+                        <img src="./assets/checkmark.png" alt="Check" class="icon">
+                        <div>
+                            <h4>Angular Development</h4>
+                            <p>Implemented library search results page using Angular, consuming APIs with user-defined filters</p>
+                        </div>
                     </div>
-                    <h2 class="experience-sub-title project-title">AI/ML Flower Classifier Project</h2>
-                    <div class="btn-container">
-                        <button 
-                        class="btn btn-color-2 project-btn" 
-                        onclick="location.href='https://www.kaggle.com/code/danyeolchae/flower-classifier'">
-                            Keras
-                        </button>
-                        <button 
-                        class="btn btn-color-2 project-btn" 
-                        onclick="location.href='REPLACE ME'">
-                            See Project
-                        </button>
+                    <div class="experience-skill-item">
+                        <img src="./assets/checkmark.png" alt="Check" class="icon">
+                        <div>
+                            <h4>System Integration</h4>
+                            <p>Solved integration challenges between modern frameworks and legacy systems</p>
+                        </div>
                     </div>
                 </div>
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img 
-                        src="./assets/fern.jpeg" 
-                        alt="Project 4" 
-                        class="project-img">
+            </div>
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div class="experience-icon">
+                        <img src="./assets/Calvin-Wayfinder-Symbol-FullColor (1).png" alt="Calvin University" class="company-logo">
                     </div>
-                    <h2 class="experience-sub-title project-title">Fractal Fern Project</h2>
-                    <div class="btn-container">
-                        <button 
-                        class="btn btn-color-2 project-btn" 
-                        onclick="location.href='https://github.com/Chaerry22/Fern'">
-                            GitHub
-                        </button>
-                        <button 
-                        class="btn btn-color-2 project-btn" 
-                        onclick="location.href='REPLACE ME'">
-                            See Project
-                        </button>
+                    <div>
+                        <h3 class="experience-title">Data Analyst</h3>
+                        <p class="experience-company">Calvin University | May 2024 - Present</p>
                     </div>
                 </div>
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img 
-                        src="./assets/ItalianPizza.jpg" 
-                        alt="Project 3"
-                        width="10rem"
-                        class="project-img">
+                <div class="experience-skills">
+                    <div class="experience-skill-item">
+                        <img src="./assets/checkmark.png" alt="Check" class="icon">
+                            <div>
+                            <h4>Power BI & Data Visualization</h4>
+                            <p>Developing Power BI reports using Handshake API endpoints for real-time student data reports</p>
+                        </div>
+                            </div>
+                    <div class="experience-skill-item">
+                        <img src="./assets/checkmark.png" alt="Check" class="icon">
+                            <div>
+                            <h4>Data Analysis Tools</h4>
+                            <p>Using Power BI, Power Query, Tableau, Salesforce, Workday, Excel, and Python for analysis and visualization</p>
+                        </div>
+                            </div>
+                    <div class="experience-skill-item">
+                        <img src="./assets/checkmark.png" alt="Check" class="icon">
+                            <div>
+                            <h4>Web Development</h4>
+                            <p>Developing Career Center Website to include embedded reports, statistics, and information</p>
+                        </div>
+                            </div>
+                    <div class="experience-skill-item">
+                        <img src="./assets/checkmark.png" alt="Check" class="icon">
+                            <div>
+                            <h4>Cross-Department Collaboration</h4>
+                            <p>Working with teams and departments to create consistent and accurate data structures across platforms</p>
+                            </div>
                     </div>
-                    <h2 class="experience-sub-title project-title">Pizzaria Website Project</h2>
-                    <div class="btn-container">
-                        <button 
-                        class="btn btn-color-2 project-btn" 
-                        onclick="location.href='pizza.html'">
-                            See Project
-                        </button>
+                </div>
+            </div>
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div class="experience-icon">
+                        <img src="./assets/adac-logo.png" alt="ADAC Automotive" class="company-logo">
+                    </div>
+                    <div>
+                        <h3 class="experience-title">Data Engineering Intern</h3>
+                        <p class="experience-company">ADAC Automotive | May 2025 - Aug 2025</p>
+                    </div>
+                </div>
+                <div class="experience-skills">
+                    <div class="experience-skill-item">
+                        <img src="./assets/checkmark.png" alt="Check" class="icon">
+                        <div>
+                            <h4>SQL & Database Management</h4>
+                            <p>Built and optimized SQL reports for finance cost validation, improving accuracy and efficiency</p>
+                        </div>
+                    </div>
+                    <div class="experience-skill-item">
+                        <img src="./assets/checkmark.png" alt="Check" class="icon">
+                        <div>
+                            <h4>MES Development</h4>
+                            <p>Developed Ignition application modules for Manufacturing Execution Systems asset and line management</p>
+                        </div>
+                    </div>
+                    <div class="experience-skill-item">
+                        <img src="./assets/checkmark.png" alt="Check" class="icon">
+                            <div>
+                            <h4>ERP Integration</h4>
+                            <p>Consolidated and mapped 290+ vendor applications to support ERP transition planning</p>
+                        </div>
+                            </div>
+                    <div class="experience-skill-item">
+                        <img src="./assets/checkmark.png" alt="Check" class="icon">
+                            <div>
+                            <h4>Technical Skills</h4>
+                            <p>Gained experience in Power BI, cybersecurity, networking, ADP integration, and automation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div class="experience-icon">
+                        <img src="./assets/Calvin-Wayfinder-Symbol-FullColor (1).png" alt="Calvin University" class="company-logo">
+                            </div>
+                            <div>
+                        <h3 class="experience-title">Resident Assistant</h3>
+                        <p class="experience-company">Calvin University</p>
+                    </div>
+                            </div>
+                <div class="experience-skills">
+                    <div class="experience-skill-item">
+                        <img src="./assets/checkmark.png" alt="Check" class="icon">
+                            <div>
+                            <h4>Leadership</h4>
+                            <p>Leading and mentoring student residents</p>
+                        </div>
+                            </div>
+                    <div class="experience-skill-item">
+                        <img src="./assets/checkmark.png" alt="Check" class="icon">
+                            <div>
+                            <h4>Teamwork</h4>
+                            <p>Collaborating with staff and students</p>
+                        </div>
+                            </div>
+                    <div class="experience-skill-item">
+                        <img src="./assets/checkmark.png" alt="Check" class="icon">
+                            <div>
+                            <h4>Problem Solving</h4>
+                            <p>Resolving conflicts and challenges</p>
+                        </div>
+                            </div>
+                    <div class="experience-skill-item">
+                        <img src="./assets/checkmark.png" alt="Check" class="icon">
+                            <div>
+                            <h4>Communication</h4>
+                            <p>Effective verbal and written communication</p>
+                            </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section id="contact">
-        <p class="section__text__p1">Get in Touch</p>
-        <h1 class="title">Contact Me</h1>
-        <div class="contact-info-upper-container">
-          <div class="contact-info-container">
-            <img
-              src="./assets/email.png"
-              alt="Email icon"
-              class="icon contact-icon email-icon"
-            />
-            <p><a href="mailto:examplemail@gmail.com">dchae22@gmail.com</a></p>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="section-header">
+            <p class="section-subtitle">Some of my</p>
+            <h2 class="section-title">Projects</h2>
+        </div>
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <div class="project-image-wrapper">
+                    <img src="./assets/flower.jpeg" alt="AI/ML Flower Classifier" class="project-image">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://www.kaggle.com/code/danyeolchae/flower-classifier" target="_blank" class="project-link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09l-1.3 2.6L9.36 3H6.27L4.87 5.6a4.27 4.27 0 0 0-1.05 2.82v6.16a4.27 4.27 0 0 0 1.05 2.82L6.27 21h3.09l1.3-2.6L12 21h3.09l1.46-2.6a4.27 4.27 0 0 0 1.05-2.82V8.42a4.27 4.27 0 0 0-1.05-2.82zM10.5 7.5v9m-4.5-4.5h9"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">AI/ML Flower Classifier</h3>
+                    <p class="project-description">
+                        A machine learning model using Keras to classify different types of flowers 
+                        with high accuracy using convolutional neural networks.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Keras</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">CNN</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image-wrapper">
+                    <div style="background: linear-gradient(135deg, #001f3f, #003d7a); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.5rem; text-align: center; padding: 2rem;">Sonic Sensor Theremin</div>
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://github.com/Sk243/cs326_theremin" target="_blank" class="project-link" title="GitHub">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Sonic Sensor Theremin</h3>
+                    <p class="project-description">
+                        An innovative musical instrument using 2 Raspberry Pis, breadboards, actuators, and 2 sonic sensors to play music. 
+                        One Pi handles input from sensors, while the other manages output to speakers. Communication between devices 
+                        is achieved via MQTT protocol, with a web app hosted on the output Pi for customization controls.
+                    </p>
+                    <div class="btn-container" style="margin-top: 1rem; margin-bottom: 1rem;">
+                        <a href="https://github.com/Sk243/cs326_theremin" target="_blank" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            <span>View on GitHub</span>
+                        </a>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Raspberry Pi</span>
+                        <span class="tag">MQTT</span>
+                        <span class="tag">IoT</span>
+                        <span class="tag">Embedded Systems</span>
+                        <span class="tag">Web Development</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image-wrapper">
+                    <img src="./assets/EventSphereLogo.png" alt="EventSphere" class="project-image">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://github.com/cs262-thefunteam" target="_blank" class="project-link" title="GitHub">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">EventSphere</h3>
+                    <p class="project-description">
+                        A React Native mobile application designed to connect local communities and university students through event sharing. 
+                        Built with Azure Database and Azure backend services, the app allows users to post and discover events in their area. 
+                        Event organizers can easily organize and market their events, fostering community engagement and connections.
+                    </p>
+                    <div class="btn-container" style="margin-top: 1rem; margin-bottom: 1rem;">
+                        <a href="https://github.com/cs262-thefunteam" target="_blank" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            <span>View on GitHub</span>
+                        </a>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">React Native</span>
+                        <span class="tag">Azure</span>
+                        <span class="tag">Mobile Development</span>
+                        <span class="tag">Backend</span>
+                        <span class="tag">Database</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image-wrapper">
+                    <img src="./assets/LifeGivingWaterInternationalLogo.png" alt="AguaVision - Life Giving Water International" class="project-image">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://lgwi-app.github.io/" target="_blank" class="project-link" title="Project Website">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                            <a href="https://www.lifegivingwaterinternational.org/" target="_blank" class="project-link" title="LGWI Organization">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                    </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">AguaVision</h3>
+                    <p class="project-description">
+                        A comprehensive water meter measurement system developed for Life Giving Water International to serve communities in South America. 
+                        The mobile application uses Optical Character Recognition (OCR) technology to automatically read water meter levels, 
+                        replacing handwritten systems with a digital solution that ensures accurate tracking, transparent billing, and equitable 
+                        water distribution based on actual usage.
+                    </p>
+                    <div class="btn-container" style="margin-top: 1rem; margin-bottom: 1rem;">
+                        <a href="https://lgwi-app.github.io/" target="_blank" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;">
+                            <span>View Project</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </a>
+                        <a href="https://www.lifegivingwaterinternational.org/" target="_blank" class="btn btn-secondary" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;">
+                            <span>LGWI Organization</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">React Native</span>
+                        <span class="tag">Google Vision</span>
+                        <span class="tag">Mobile Development</span>
+                        <span class="tag">Full Stack Development</span>
+                        <span class="tag">Social Impact</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="section-header">
+            <p class="section-subtitle">Get in Touch</p>
+            <h2 class="section-title">Contact Me</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info-cards">
+                <div class="contact-card">
+                    <div class="contact-icon-wrapper">
+                        <img src="./assets/email.png" alt="Email" class="contact-icon">
+                    </div>
+                    <h3>Email</h3>
+                    <a href="mailto:dchae22@gmail.com">dchae22@gmail.com</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon-wrapper">
+                        <img src="./assets/phone icon.png" alt="Phone" class="contact-icon">
+                    </div>
+                    <h3>Phone</h3>
+                    <a href="tel:+16197336526">(619) 733-6526</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon-wrapper">
+                        <img src="./assets/linkedin.png" alt="LinkedIn" class="contact-icon">
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/danyeol-chae-04979424a/" target="_blank">Connect with me</a>
           </div>
-          <div class="contact-info-container">
-            <img
-              src="./assets/phone icon.png"
-              alt="Email icon"
-              class="icon contact-icon email-icon"
-            />
-            <p><a href="mailto:examplemail@gmail.com">(619) 733-6526</a></p>
           </div>
-          <div class="contact-info-container">
-            <img
-              src="./assets/linkedin.png"
-              alt="LinkedIn icon"
-              class="icon contact-icon"
-            />
-            <p><a href="https://www.linkedin.com">LinkedIn</a></p>
+            <div class="contact-message">
+                <p>
+                    I'm always open to discussing new opportunities, interesting projects, 
+                    or just having a conversation about technology and innovation. 
+                    Feel free to reach out!
+                </p>
           </div>
         </div>
-       
-        <!-- <div class="contact-form-container">
-            <form id="contact-form" action="send_message.php" method="post">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-                
-                <button type="submit" class="btn send-message-btn">Send Message</button>
-            </form>
-        </div> -->
-        
     </section>
-    <footer>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <p>&copy; 2024 Danyeol Chae. All rights reserved.</p>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-nav">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/danyeol-chae-04979424a/" target="_blank" aria-label="LinkedIn">
+                    <img src="./assets/linkedin.png" alt="LinkedIn" class="icon">
+                </a>
+                <a href="https://github.com/Chaerry22" target="_blank" aria-label="GitHub">
+                    <img src="./assets/github.png" alt="GitHub" class="icon">
+                </a>
+            </div>
+            <p class="footer-text">&copy; 2024 Danyeol Chae. All rights reserved.</p>
+        </div>
     </footer>
     
     <script src="script.js"></script>
