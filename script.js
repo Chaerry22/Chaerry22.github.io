@@ -262,3 +262,16 @@ if ('IntersectionObserver' in window) {
 
 console.log('%c👋 Hello! Thanks for checking out my portfolio!', 'color: #6366f1; font-size: 16px; font-weight: bold;');
 console.log('%cWant to connect? Reach out at dchae22@gmail.com', 'color: #94a3b8; font-size: 12px;');
+
+// ============================================
+// Skills carousel + move skills to bottom
+// ============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Put Skills between Projects and Contact
+    const skillsSection = document.getElementById('skills');
+    const contactSection = document.getElementById('contact');
+    if (skillsSection && contactSection && contactSection.parentNode) {
+        contactSection.parentNode.insertBefore(skillsSection, contactSection);
+    }
+});
